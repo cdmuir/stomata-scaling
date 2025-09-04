@@ -1,0 +1,35 @@
+# Packages for analysis
+install.packages("ape")
+install.packages("broom")
+install.packages("checkmate")
+install.packages("cowplot")
+install.packages("ellipse")
+install.packages("furrr")
+install.packages("future")
+install.packages("glue")
+install.packages("magrittr")
+install.packages("mvnfast")
+install.packages("mvSLOUCH")
+install.packages("nleqslv")
+install.packages("PCMBaseCpp")
+install.packages("phylolm")
+install.packages("phytools")
+install.packages("POUMM")
+install.packages("progress")
+install.packages("RefManageR")
+install.packages("reticulate")
+install.packages("rlang")
+install.packages("scales")
+install.packages("tidybayes")
+install.packages("tidyverse")
+install.packages("tikzDevice")
+install.packages("units")
+
+# Packages for writing
+install.packages("knitcitations")
+install.packages("knitr")
+
+# Non-CRAN packages
+install.packages("remotes")
+# Sys.unsetenv("GITHUB_PAT") # GITHUB_PAT was causing an issue
+remotes::install_github("traitecoevo/taxonlookup")
