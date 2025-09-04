@@ -1,3 +1,5 @@
+[![DOI](https://zenodo.org/badge/1050530864.svg)](https://doi.org/10.5281/zenodo.17055962)
+
 # stomata-scaling
 
 The repository contains source code for analyses and simulations related to:
