@@ -395,40 +395,27 @@ get_micro_init = function(dag_bar0, micro_pars, constraints, x, model) {
   )
 }
 
-# Custom rOU function from POUMM so I don't have to install library on HPC
-# rOU <- function(n, z0, t, alpha, theta, sigma) 
-# {
-#   ett <- exp(-alpha * t)
-#   sd <- sigma * sqrt(t)
-#   a <- alpha > 0
-#   sd[a] <- sigma[a] * sqrt((1 - ett[a]^2)/(2 * alpha[a]))
-#   mean <- z0 * ett + theta * (1 - ett)
-#   nan <- is.infinite(t) & alpha == 0
-#   mean[nan] <- z0[nan]
-#   rnorm(n, mean = mean, sd = sd)
-# }
-
 # Shortcut function for calculating var_z
-var_z <- function(var_ds, var_as, cov_da, B) {
+var_z = function(var_ds, var_as, cov_da, B) {
   var_ds + B ^ 2 * var_as + 2 * B * cov_da
 }
 
 # Calculations of gsmax follow Sack and Buckley 2016
-biophysical_constant <- function(D_wv, v) D_wv / v
+biophysical_constant = function(D_wv, v) D_wv / v
 
-morphological_constant <- function(c, h, j) {
+morphological_constant = function(c, h, j) {
   (pi * c ^ 2) / (j ^ 0.5 * (4 * h * j + pi * c))
 }
 
 # Faster mean and variance functions
-mean1 <- function(x) sum(x) / length(x)
-var1 <- function(x) sum((x - sum(x) / length(x)) ^ 2) / (length(x) - 1)
+mean1 = function(x) sum(x) / length(x)
+var1 = function(x) sum((x - sum(x) / length(x)) ^ 2) / (length(x) - 1)
 
 # Acceptable names in each parameter set
-par_names <- function(type) {
+par_names = function(type) {
   
   assert_character(type, len = 1L)
-  type <- match.arg(type, c("ou", "qg", "trait", "physical_limits"))
+  type = match.arg(type, c("ou", "qg", "trait", "physical_limits"))
   switch(
     type,
     ou = c("alpha", "sigma", "theta"),
@@ -478,30 +465,30 @@ check_pars = function(ou_pars, qg_pars, trait_pars, physical_limits) {
 }
 
 # Calculate absolute fitness using univariate Gaussian
-get_W <- function(z, W_max, u, V_s, log = FALSE) {
+get_W = function(z, W_max, u, V_s, log = FALSE) {
   if (log) {
-    ret <- log(W_max) - (z - u) ^ 2 / V_s
+    ret = log(W_max) - (z - u) ^ 2 / V_s
   } else {
-    ret <- W_max * exp(-(z - u) ^ 2 / V_s) 
+    ret = W_max * exp(-(z - u) ^ 2 / V_s) 
   }
   ret
 }
 
 # Function to concatenate simulations from individual output files
-concatenate_sims <- function(.x, output_name = NULL) {
+concatenate_sims = function(.x, output_name = NULL) {
   
-  if (is.null(output_name)) output_name <- .x[1]
+  if (is.null(output_name)) output_name = .x[1]
   
-  output <- str_c("simulations/", .x)
-  sims <- map(output, ~{
+  output = str_c("simulations/", .x)
+  sims = map(output, ~{
     str_c(.x, "/", list.files(.x))
   }) %>%
     unlist()
   
-  pb <- progress_bar$new(length(sims),
+  pb = progress_bar$new(length(sims),
                          format = "[:bar] :current/:total (:percent) :eta")
   
-  sim_set <- seq_len(length(sims)) %>%
+  sim_set = seq_len(length(sims)) %>%
     map_dfr(~{
       pb$tick()
       read_rds(sims[.x])
@@ -741,19 +728,19 @@ rMVOU = function(n, Z0, t, Alpha, Theta, Sigma) {
 StationaryVariance = function(Alpha, Sigma)
 {
   alpha = sqrtm(Alpha)
-  Sigma <- Sigma
-  eig <- eigen(alpha)
-  P <- eig$vectors
-  invP <- solve(P)
-  eigvalues <- eig$values
+  Sigma = Sigma
+  eig = eigen(alpha)
+  P = eig$vectors
+  invP = solve(P)
+  eigvalues = eig$values
   p = dim(Sigma)[1]
-  Mat <- matrix(0, p, p)
+  Mat = matrix(0, p, p)
   for (i in 1:p) {
     for (j in 1:p) {
-      Mat[i, j] <- 1 / (eigvalues[i] + eigvalues[j])
+      Mat[i, j] = 1 / (eigvalues[i] + eigvalues[j])
     }
   }
-  StVar <- P %*% (Mat * (invP %*% Sigma %*% t(invP))) %*% t(P)
+  StVar = P %*% (Mat * (invP %*% Sigma %*% t(invP))) %*% t(P)
   return(StVar)
 }
 

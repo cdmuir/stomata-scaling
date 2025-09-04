@@ -4,7 +4,7 @@ The repository contains source code for analyses and simulations related to:
 
 *Bounds on stomatal size can explain scaling with stomatal density in forest plants*
 
-Congcong Liu, Christopher D. Muir, Ying Li, Jiahui Zhang, Guirui Yu, Li Xu, Mingxu Li, Zihao Zhang,  Hugo Jan de Boer,  Lawren Sack, Xingguo Han, Nianpeng He
+Congcong Liu, Christopher D. Muir, Ying Li, Jiahui Zhang, Guirui Yu, Li Xu, Mingxu Li, Zihao Zhang, Hugo Jan de Boer, Lawren Sack, Xingguo Han, Nianpeng He
 
 ## Downloading repository 
 

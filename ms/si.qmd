@@ -26,7 +26,7 @@ execute:
   warning: false
   cache: true
 bibliography: stomata-scaling.bib
-# csl: https://www.zotero.org/styles/new-phytologist
+csl: https://www.zotero.org/styles/new-phytologist
 ---
 
 ```{r, setup, include=FALSE}
