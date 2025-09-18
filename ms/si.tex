@@ -113,8 +113,6 @@
 
 \usepackage{booktabs}
 \usepackage{caption}
-% \usepackage{lineno}\linenumbers
-% \usepackage{setspace}\doublespacing
 
 % Package command for citing R packages
 \newcommand{\pkg}[1]{{\fontseries{b}\selectfont #1}} 
@@ -128,15 +126,12 @@
 
 \renewcommand\thetable{S\arabic{table}}    
 \setcounter{table}{0}
-
-% \newcommand{\gmax1}{g_\mathrm{max}}
-% \newcommand{\gmax2}{$g_\mathrm{max}$}
-% \newcommand{\fs}{$f_S$}
 \KOMAoption{captions}{tableheading}
 \usepackage{lscape}
 \usepackage{tikz}
 \renewcommand{\theequation}{S\arabic{equation}}
-\renewcommand{\thesection}{S\arabic{section}}
+\renewcommand{\thesection}{Note S\arabic{section}}
+\renewcommand{\thesubsection}{S\arabic{section}.\arabic{subsection}}
 \makeatletter
 \@ifpackageloaded{float}{}{\usepackage{float}}
 \floatstyle{plain}
@@ -212,14 +207,73 @@
 \begin{document}
 \maketitle
 
-Article title: Scaling between stomatal size and density in forest
-plants
+Article title: Bounds on stomatal size can explain scaling with stomatal
+density in forest plants
 
-Authors: Congcong Liu, Christopher D. Muir, Ying Li, Li Xu, Mingxu Li,
-Jiahui Zhang, Hugo Jan de Boer, Lawren Sack, Xingguo Han, Guirui Yu,
+Authors: Congcong Liu, Christopher D. Muir, Lawren Sack, Ying Li, Li Xu,
+Mingxu Li, Jiahui Zhang, Hugo Jan de Boer, Xingguo Han, Guirui Yu,
 Nianpeng He
 
-Article acceptance date: TBA
+Article acceptance date: 11 September 2025
+
+\section{\texorpdfstring{Covariance between \(f_\text{S}\) and
+\(g_\mathrm{s,max}\)}{Covariance between f\_\textbackslash text\{S\} and g\_\textbackslash mathrm\{s,max\}}}\label{covariance-between-f_texts-and-g_mathrmsmax}
+
+Here we prove that the covariance between \(f_\text{S}\) and
+\(g_\mathrm{s,max}\) as defined in Eqn. 1 and Eqn. 2 must almost
+certainly be positive on a log-log scale. The problem can be formulated
+as follows:
+
+\begin{equation}\phantomsection\label{eq-ineq1}{\text{Cov} \left(\log f_\text{S}, \log g_\mathrm{s,max} \right) > 0.}\end{equation}
+
+Substituting the right-hand sides of Eqn. 1 and 2 into
+Eqn~\ref{eq-ineq1} and removing constants, we obtain:
+
+\begin{equation}\phantomsection\label{eq-ineq2}{\text{Cov} \left(d_\text{S} + a_\text{S}, d_\text{S} + \beta a_\text{S} \right) > 0.}\end{equation}
+
+Applying the addition rule and bilinearity of covariance property:
+
+\begin{equation}\phantomsection\label{eq-cov1}{\text{Cov} \left(d_\text{S} + a_\text{S}, d_\text{S} + \beta a_\text{S} \right) = \text{Var} \left( d_\text{S} \right) + \beta \text{Var} \left( a_\text{S} \right) + \left(1 + \beta \right) \text{Cov} \left(d_\text{S}, a_\text{S} \right).}\end{equation}
+
+Based on Eqn~\ref{eq-cov1},
+\(\text{Cov} \left(\log f_\text{S}, \log g_\mathrm{s,max} \right)\) must
+be greater than 0 if
+\(\text{Cov} \left(d_\text{S}, a_\text{S} \right) > 0\), so we restrict
+the analysis to the domain where
+\(\text{Cov} \left(d_\text{S}, a_\text{S} \right) < 0\). The covariance
+will not be positive unless:
+
+\begin{equation}\phantomsection\label{eq-cov2}{\text{Cov} \left(d_\text{S}, a_\text{S} \right) < -\frac{\text{Var} \left( d_\text{S} \right) + \beta \text{Var} \left( a_\text{S} \right)}{1 + \beta}.}\end{equation}
+
+The minimum value of the covariance for a given correlation \(\rho\)
+between \(d_\text{S}\) and \(a_\text{S}\) is:
+
+\begin{equation}\phantomsection\label{eq-cov3}{\text{Cov} \left(d_\text{S}, a_\text{S} \right) \ge - \rho \sqrt{\text{Var} \left( d_\text{S} \right) \text{Var} \left( a_\text{S} \right)}.}\end{equation}
+
+From the minimum and maximum values of the covariance in
+Eqn~\ref{eq-cov2} and Eqn~\ref{eq-cov3}, it is only possible to for
+\(f_\text{S}\) and \(g_\mathrm{s,max}\) to negatively covary if
+\(\beta < 1\) and the ratio of their variances is between:
+
+\begin{equation}\phantomsection\label{eq-ratio1}{ \beta ^ 2 < \frac{\text{Var} \left( d_\text{S} \right)}{\text{Var} \left( a_\text{S} \right)} < 1}\end{equation}
+
+Within this range, the least negative possible correlation between
+\(d_\text{S}\) and \(a_\text{S}\) that would result is positive
+covariance between \(f_\text{S}\) and \(g_\mathrm{s,max}\) is where
+\(\text{Var} \left( d_\text{S} \right) / \text{Var} \left( a_\text{S} \right) = \beta\).
+Substituting this into Eqn~\ref{eq-cov2} and calculating the
+correlation, we find that the correlation \(d_\text{S}\) and
+\(a_\text{S}\) must be:
+
+\begin{equation}\phantomsection\label{eq-rho}{ -1 \ge \rho \ge \frac{2 \sqrt{\beta}}{1 + \beta}}\end{equation}
+
+For \(\beta = 0.5\), the relationship \(f_\text{S}\) and
+\(g_\mathrm{s,max}\) must be positive unless the correlation between
+\(d_\text{S}\) and \(a_\text{S}\) is less than -0.943. Hence, there is
+extremely limited scope for the covariance between \(f_\text{S}\) and
+\(g_\mathrm{s,max}\) to be negative.
+
+\newpage
 
 \section{Background on evolutionary quantitative genetics and estimating
 trait relationships}\label{sec-background}
@@ -271,6 +325,8 @@ Phylogenetic information can be incorporated into both OLS (often
 referred to as generalized least-squares; Grafen (1989)) and SMA methods
 (e.g. Ives \emph{et al.} (2007)) to account for statistical
 nonindependence in the residuals.
+
+\newpage
 
 \begin{longtable}[]{@{}
   >{\raggedright\arraybackslash}p{(\columnwidth - 2\tabcolsep) * \real{0.1429}}
@@ -384,7 +440,7 @@ species \([\overline{d}_\mathrm{S}^*, \overline{a}_\mathrm{S}^*]\) \\
 Theory}\label{sec-theory}
 
 Here we describe a evolutionary quantitative genetic (EQG) modeling
-framework and derive predictions about stomtal size-density scaling
+framework and derive predictions about stomatal size-density scaling
 under competing hypotheses. A glossary of symbols is provided in
 Table~\ref{tbl-glossary}. The model integrates microevolutionary (within
 species) and macroevolutionary (among species) processes. Within
@@ -1193,6 +1249,8 @@ on \(g_\mathrm{s,max}\) and \(f_\mathrm{S}\) with bounds on stomatal
 size shapes the covariance between density and size such it is not
 predictable from a single selective target in isolation.
 
+\newpage
+
 \section{Evolutionary quantitative genetic model:
 Simulations}\label{sec-simulations}
 
@@ -1281,64 +1339,10 @@ expectations, we estimated the sample covariance matrix among species in
 the final generation and calculated 95\% confidence intervals using
 \(10^3\) bootstrap replicates.
 
-\section{\texorpdfstring{Covariance between \(f_\text{S}\) and
-\(g_\mathrm{s,max}\)}{Covariance between f\_\textbackslash text\{S\} and g\_\textbackslash mathrm\{s,max\}}}\label{covariance-between-f_texts-and-g_mathrmsmax}
+  \newpage
+  \renewcommand{\thesection}{}
 
-Here we prove that the covariance between \(f_\text{S}\) and
-\(g_\mathrm{s,max}\) as defined in Eqn. 1 and Eqn. 2 must almost
-certainly be positive on a log-log scale. The problem can be formulated
-as follows:
-
-\begin{equation}\phantomsection\label{eq-ineq1}{\text{Cov} \left(\log f_\text{S}, \log g_\mathrm{s,max} \right) > 0.}\end{equation}
-
-Substituting the right-hand sides of Eqn. 1 and 2 into
-Eqn~\ref{eq-ineq1} and removing constants, we obtain:
-
-\begin{equation}\phantomsection\label{eq-ineq2}{\text{Cov} \left(d_\text{S} + a_\text{S}, d_\text{S} + \beta a_\text{S} \right) > 0.}\end{equation}
-
-Applying the addition rule and bilinearity of covariance property:
-
-\begin{equation}\phantomsection\label{eq-cov1}{\text{Cov} \left(d_\text{S} + a_\text{S}, d_\text{S} + \beta a_\text{S} \right) = \text{Var} \left( d_\text{S} \right) + \beta \text{Var} \left( a_\text{S} \right) + \left(1 + \beta \right) \text{Cov} \left(d_\text{S}, a_\text{S} \right).}\end{equation}
-
-Based on Eqn~\ref{eq-cov1},
-\(\text{Cov} \left(\log f_\text{S}, \log g_\mathrm{s,max} \right)\) must
-be greater than 0 if
-\(\text{Cov} \left(d_\text{S}, a_\text{S} \right) > 0\), so we restrict
-the analysis to the domain where
-\(\text{Cov} \left(d_\text{S}, a_\text{S} \right) < 0\). The covariance
-will not be positive unless:
-
-\begin{equation}\phantomsection\label{eq-cov2}{\text{Cov} \left(d_\text{S}, a_\text{S} \right) < -\frac{\text{Var} \left( d_\text{S} \right) + \beta \text{Var} \left( a_\text{S} \right)}{1 + \beta}.}\end{equation}
-
-The minimum value of the covariance for a given correlation \(\rho\)
-between \(d_\text{S}\) and \(a_\text{S}\) is:
-
-\begin{equation}\phantomsection\label{eq-cov3}{\text{Cov} \left(d_\text{S}, a_\text{S} \right) \ge - \rho \sqrt{\text{Var} \left( d_\text{S} \right) \text{Var} \left( a_\text{S} \right)}.}\end{equation}
-
-From the minimum and maximum values of the covariance in
-Eqn~\ref{eq-cov2} and Eqn~\ref{eq-cov3}, it is only possible to for
-\(f_\text{S}\) and \(g_\mathrm{s,max}\) to negatively covary if
-\(\beta < 1\) and the ratio of their variances is between:
-
-\begin{equation}\phantomsection\label{eq-ratio1}{ \beta ^ 2 < \frac{\text{Var} \left( d_\text{S} \right)}{\text{Var} \left( a_\text{S} \right)} < 1}\end{equation}
-
-Within this range, the least negative possible correlation between
-\(d_\text{S}\) and \(a_\text{S}\) that would result is positive
-covariance between \(f_\text{S}\) and \(g_\mathrm{s,max}\) is where
-\(\text{Var} \left( d_\text{S} \right) / \text{Var} \left( a_\text{S} \right) = \beta\).
-Substituting this into Eqn~\ref{eq-cov2} and calculating the
-correlation, we find that the correlation \(d_\text{S}\) and
-\(a_\text{S}\) must be:
-
-\begin{equation}\phantomsection\label{eq-rho}{ -1 \ge \rho \ge \frac{2 \sqrt{\beta}}{1 + \beta}}\end{equation}
-
-For \(\beta = 0.5\), the relationship \(f_\text{S}\) and
-\(g_\mathrm{s,max}\) must be positive unless the correlation between
-\(d_\text{S}\) and \(a_\text{S}\) is less than -0.943. Hence, there is
-extremely limited scope for the covariance between \(f_\text{S}\) and
-\(g_\mathrm{s,max}\) to be negative.
-
-\section{Figures}\label{sec-figures}
+\section{Supporting Figures}\label{sec-figures}
 
 \begin{figure}
 \caption{The fraction of epidermal area allocated to stomata ($f_\mathrm{S}$) is strongly positively correlated with the maximum stomatal conductance ($g_\mathrm{s,max}$) across species of Angiosperms (left), Gymnosperms (center), and Pteridophytes (right). Dark points are species' means within focal group; grey points are data from all species for reference.}
@@ -1355,20 +1359,6 @@ extremely limited scope for the covariance between \(f_\text{S}\) and
 \newpage
 
 \begin{figure}
-\caption{The effect of mutational correlation between stomtal density and size ($\rho_\mathrm{M}$) on the additive genetic correlation under $H_2$: stomatal-area minimization hypothesis. The additive genetic correlation between stomatal density and size within species at mutation-selection balance depends on mutational correlation and the strength of selection on $f_\mathrm{S}$ ($\phi_f$). The strength of selection on stomatal size varied between $\phi_f = 0.5$ (strong, solid line), $\phi_f = 1$ (medium, dotted line), and $\phi_f = 2$ (weak, dashed line). Other parameters were set to $M_{d_\mathrm{S}} = M_{a_\mathrm{S}} = 3.77 \times 10^{-7}$ and $\omega = 3.77 \times 10^{-2}$. See text for explanation of parameter values.}
-\input{figures/figH2G2.tex}
-\end{figure}
-
-\newpage
-
-\begin{figure}
-\caption{The effect of selection on and mutational variance in stomatal size on the additive genetic variance under $H_2$: stomatal-area minimization hypothesis. The ratio of additive genetic variance within species at mutation-selection balance in stomatal density and size depends on the relative mutational variance ($M_{d_\mathrm{S}} / M_{a_\mathrm{S}}$) and the strength of selection on $f_\mathrm{S}$ ($\phi_f \omega$). Results are shown for $M_{d_\mathrm{S}} = 3.77 \times 10^{-7}$ while $M_{a_\mathrm{S}}$ varied from $0.1 M_{d_\mathrm{S}}$ (low, solid line), $M_{d_\mathrm{S}}$ (medium, dotted line), and $10 M_{d_\mathrm{S}}$ (high, dashed line). The relative strength of selection on $f_\mathrm{S}$ varied between $\phi_f = 0.5$ and 2. We also assumed no mutational correlation and $\omega = 3.77 \times 10^{-2}$. See text for explanation of parameter values.}
-\input{figures/figH2G3.tex}
-\end{figure}
-
-\newpage
-
-\begin{figure}
 \caption{The effect of mutational variance and strength of selection on $g_\mathrm{s,max}$ on the additive genetic variance within species under $H_3$: stomatal adaptation + bounded size hypothesis. The additive genetic variance within species at mutation-selection balance in stomatal density (left panel) and size (right panel) depends on mutational variance ($M_{d_\mathrm{S}}$ and $M_{a_\mathrm{S}}$) and the strength of selection on $g_\mathrm{s,max}$ ($\omega$). In the left panel, $M_{a_\mathrm{S}} = 3.77 \times 10^{-7}$ while $M_{d_\mathrm{S}}$ varied; in the right panel, $M_{d_\mathrm{S}} = 3.77 \times 10^{-7}$ while $M_{a_\mathrm{S}}$ varied. The strength of selection on $g_\mathrm{s,max}$ varied between $\omega = 7.54 \times 10^{-2}$ (weak, solid line), $\omega = 3.77 \times 10^{-2}$ (medium, dotted line), and $\omega = 1.89 \times 10^{-2}$ (strong, dashed line). We also assumed no mutational correlation and $\phi_a = 2$. See text for explanation of parameter values. Note that both stomatal density and size are expressed on a log-scale.}
 \input{figures/figH3G1.tex}
 \end{figure}
@@ -1376,15 +1366,29 @@ extremely limited scope for the covariance between \(f_\text{S}\) and
 \newpage
 
 \begin{figure}
-\caption{The effect of mutational correlation between stomtal density and size ($\rho_\mathrm{M}$) on the additive genetic correlation under $H_3$: stomatal adaptation + bounded size hypothesis. The additive genetic correlation between stomatal density and size within species at mutation-selection balance depends on mutational correlation and the strength of selection on stomatal size ($\phi_a$). The strength of selection on stomatal size varied between $\phi_a = 0.5$ (strong, solid line), $\phi_a = 1$ (medium, dotted line), and $\phi_a = 2$ (weak, dashed line). Other parameters were set to $M_{d_\mathrm{S}} = M_{a_\mathrm{S}} = 3.77 \times 10^{-7}$ and $\omega = 3.77 \times 10^{-2}$. See text for explanation of parameter values.}
-\input{figures/figH3G2.tex}
+\caption{The effects of selection on minimizing $f_\mathrm{S}$ and mutational variance in stomatal size on the additive genetic variance under $H_2$: stomatal-area minimization hypothesis. The ratio of additive genetic variance within species at mutation-selection balance in stomatal density and size depends on the relative mutational variance ($M_{d_\mathrm{S}} / M_{a_\mathrm{S}}$) and the strength of selection on $f_\mathrm{S}$ ($\phi_f \omega$). Results are shown for $M_{d_\mathrm{S}} = 3.77 \times 10^{-7}$ while $M_{a_\mathrm{S}}$ varied from $0.1 M_{d_\mathrm{S}}$ (low, solid line), $M_{d_\mathrm{S}}$ (medium, dotted line), and $10 M_{d_\mathrm{S}}$ (high, dashed line). The relative strength of selection on $f_\mathrm{S}$ varied between $\phi_f = 0.5$ and 2. We also assumed no mutational correlation and $\omega = 3.77 \times 10^{-2}$. See text for explanation of parameter values.}
+\input{figures/figH2G3.tex}
 \end{figure}
 
 \newpage
 
 \begin{figure}
-\caption{The effect of selection on and mutational variance in stomatal size on the additive genetic variance under $H_3$: stomatal adaptation + bounded size hypothesis. The ratio of additive genetic variance within species at mutation-selection balance in stomatal density and size depends on the relative mutational variance ($M_{d_\mathrm{S}} / M_{a_\mathrm{S}}$) and the strength of selection on stomatal size ($\phi_a \omega$). Results are shown for $M_{d_\mathrm{S}} = 3.77 \times 10^{-7}$ while $M_{a_\mathrm{S}}$ varied from $0.1 M_{d_\mathrm{S}}$ (low, solid line), $M_{d_\mathrm{S}}$ (medium, dotted line), and $10 M_{d_\mathrm{S}}$ (high, dashed line). The relative strength of selection on stomatal size varied between $\phi_a = 0.5$ and 2. We also assumed no mutational correlation and $\omega = 3.77 \times 10^{-2}$. See text for explanation of parameter values.}
+\caption{The effects of selection on and mutational variance in stomatal size on the additive genetic variance under $H_3$: stomatal adaptation + bounded size hypothesis. The ratio of additive genetic variance within species at mutation-selection balance in stomatal density and size depends on the relative mutational variance ($M_{d_\mathrm{S}} / M_{a_\mathrm{S}}$) and the strength of selection on stomatal size ($\phi_a \omega$). Results are shown for $M_{d_\mathrm{S}} = 3.77 \times 10^{-7}$ while $M_{a_\mathrm{S}}$ varied from $0.1 M_{d_\mathrm{S}}$ (low, solid line), $M_{d_\mathrm{S}}$ (medium, dotted line), and $10 M_{d_\mathrm{S}}$ (high, dashed line). The relative strength of selection on stomatal size varied between $\phi_a = 0.5$ and 2. We also assumed no mutational correlation and $\omega = 3.77 \times 10^{-2}$. See text for explanation of parameter values.}
 \input{figures/figH3G3.tex}
+\end{figure}
+
+\newpage
+
+\begin{figure}
+\caption{The effect of mutational correlation between stomatal density and size ($\rho_\mathrm{M}$) on the additive genetic correlation under $H_2$: stomatal-area minimization hypothesis. The additive genetic correlation between stomatal density and size within species at mutation-selection balance depends on mutational correlation and the strength of selection on $f_\mathrm{S}$ ($\phi_f$). The strength of selection on stomatal size varied between $\phi_f = 0.5$ (strong, solid line), $\phi_f = 1$ (medium, dotted line), and $\phi_f = 2$ (weak, dashed line). Other parameters were set to $M_{d_\mathrm{S}} = M_{a_\mathrm{S}} = 3.77 \times 10^{-7}$ and $\omega = 3.77 \times 10^{-2}$. See text for explanation of parameter values.}
+\input{figures/figH2G2.tex}
+\end{figure}
+
+\newpage
+
+\begin{figure}
+\caption{The effect of mutational correlation between stomatal density and size ($\rho_\mathrm{M}$) on the additive genetic correlation under $H_3$: stomatal adaptation + bounded size hypothesis. The additive genetic correlation between stomatal density and size within species at mutation-selection balance depends on mutational correlation and the strength of selection on stomatal size ($\phi_a$). The strength of selection on stomatal size varied between $\phi_a = 0.5$ (strong, solid line), $\phi_a = 1$ (medium, dotted line), and $\phi_a = 2$ (weak, dashed line). Other parameters were set to $M_{d_\mathrm{S}} = M_{a_\mathrm{S}} = 3.77 \times 10^{-7}$ and $\omega = 3.77 \times 10^{-2}$. See text for explanation of parameter values.}
+\input{figures/figH3G2.tex}
 \end{figure}
 
 \newpage
@@ -1439,14 +1443,14 @@ extremely limited scope for the covariance between \(f_\text{S}\) and
 \newpage
 
 \begin{figure}
-\caption{Among-species trait (co)variances are not sensitive to the strength of selection on $\phi_f$ at stationarity. Dashed lines are the theoretical expectations for the interspecific variance in stomatal density ($V_{d_\mathrm{S}}^*$), stomatal size ($V_{a_\mathrm{S}}^*$), anatomical maximum stomatal conductance ($V_{g_\mathrm{s,max}}^*$), and covariance between density and size ($V_{d_\mathrm{S},a_\mathrm{S}}^*$) at stationarity. The theoretical expectations differ between the hypotheses, $H_2$: stomatal-area minimization (upper panel) and $H_3$: stomatal adaptation + bounded size (lower panel). The points are estimated from simulations of an ensemble of 1000 over a range of selection strengths ($\phi_f$), where a value of 1 corresponds to the baseline scenario. The solid line behind each points indicates the 95\% bootstrap confidence interval. All other parameters are set to their baseline value as described in the ``Baseline parameter values'' subsection.}
+\caption{Among-species trait (co)variances are not sensitive to the strength of selection to minimize $f_\mathrm{S}$ ($\phi_f$) at stationarity. Dashed lines are the theoretical expectations for the interspecific variance in stomatal density ($V_{d_\mathrm{S}}^*$), stomatal size ($V_{a_\mathrm{S}}^*$), anatomical maximum stomatal conductance ($V_{g_\mathrm{s,max}}^*$), and covariance between density and size ($V_{d_\mathrm{S},a_\mathrm{S}}^*$) at stationarity. The theoretical expectations differ between the hypotheses, $H_2$: stomatal-area minimization (upper panel) and $H_3$: stomatal adaptation + bounded size (lower panel). The points are estimated from simulations of an ensemble of 1000 over a range of selection strengths ($\phi_f$), where a value of 1 corresponds to the baseline scenario. The solid line behind each points indicates the 95\% bootstrap confidence interval. All other parameters are set to their baseline value as described in the ``Baseline parameter values'' subsection.}
 \input{figures/fig_phif.tex}
 \end{figure}
 
 \newpage
 
 \begin{figure}
-\caption{Among-species trait (co)variances are not sensitive to the strength of selection on $\phi_a$ at stationarity. Dashed lines are the theoretical expectations for the interspecific variance in stomatal density ($V_{d_\mathrm{S}}^*$), stomatal size ($V_{a_\mathrm{S}}^*$), anatomical maximum stomatal conductance ($V_{g_\mathrm{s,max}}^*$), and covariance between density and size ($V_{d_\mathrm{S},a_\mathrm{S}}^*$) at stationarity. The theoretical expectations differ only apply to $H_3$: stomatal adaptation + bounded size hypothesis. The points are estimated from simulations of an ensemble of 1000 over a range of selection strengths ($\phi_a$), where a value of 1 corresponds to the baseline scenario. The solid line behind each points indicates the 95\% bootstrap confidence interval. All other parameters are set to their baseline value as described in the ``Baseline parameter values'' subsection.}
+\caption{Among-species trait (co)variances are not sensitive to the strength of stabilizing selection on stomatal size ($\phi_a$) at stationarity. Dashed lines are the theoretical expectations for the interspecific variance in stomatal density ($V_{d_\mathrm{S}}^*$), stomatal size ($V_{a_\mathrm{S}}^*$), anatomical maximum stomatal conductance ($V_{g_\mathrm{s,max}}^*$), and covariance between density and size ($V_{d_\mathrm{S},a_\mathrm{S}}^*$) at stationarity. The theoretical expectations differ only apply to $H_3$: stomatal adaptation + bounded size hypothesis. The points are estimated from simulations of an ensemble of 1000 over a range of selection strengths ($\phi_a$), where a value of 1 corresponds to the baseline scenario. The solid line behind each points indicates the 95\% bootstrap confidence interval. All other parameters are set to their baseline value as described in the ``Baseline parameter values'' subsection.}
 \input{figures/fig_phia.tex}
 \end{figure}
 
