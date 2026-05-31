@@ -1,4 +1,4 @@
-[![DOI](https://zenodo.org/badge/1050530864.svg)](https://doi.org/10.5281/zenodo.17055962)
+[![DOI](https://zenodo.org/badge/1050530864.svg)](https://zenodo.org/badge/latestdoi/1050530864)
 
 # stomata-scaling
 
